@@ -12,11 +12,11 @@
 
 	<div class="container" ng-app="hasturs">
 		<div class="header">
-			<a href="home/"><img src="images/logo.png" alt="Hastur's Games and Comics" class="logo" /></a>
+			<a href="#/home" ng-click="setActive('home')"><img src="images/logo.png" alt="Hastur's Games and Comics" class="logo" /></a>
 			<ul class="nav" navigation>
 				<a href="#/home" ng-click="setActive('home')"><li ng-class="{active: activeView == 'home'}">HOME</li></a>
-				<a href="#/products" ng-click="setActive('products')"><li ng-class="{active: activeView == 'products'}">PRODUCTS</li></a>
 				<a href="#/events" ng-click="setActive('events')"><li ng-class="{active: activeView == 'events'}">EVENTS</li></a>
+				<a href="#/products" ng-click="setActive('products')"><li ng-class="{active: activeView == 'products'}">PRODUCTS</li></a>
 				<a href="#/contact" ng-click="setActive('contact')"><li ng-class="{active: activeView == 'contact'}">CONTACT</li></a>
 			</ul>
 		</div>

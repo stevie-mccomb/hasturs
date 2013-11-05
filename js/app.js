@@ -5,7 +5,9 @@ var app = angular.module('hasturs', [])
 
 function viewRouter($routeProvider) {
 	$routeProvider
+		.when('/events', {templateUrl: 'partials/events.html'})
 		.when('/products', {templateUrl: 'partials/products.html'})
+		.when('/contact', {templateUrl: 'partials/contact.html'})
 		.otherwise({templateUrl: 'partials/home.html'});
 }
 
