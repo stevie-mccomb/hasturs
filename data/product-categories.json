@@ -1,0 +1,32 @@
+{
+	"0": {
+		"id": "board",
+		"name": "Board Games",
+		"image": "images/product-categories/board-games.jpg"
+	},
+	"1": {
+		"id": "card",
+		"name": "Card Games",
+		"image": "images/product-categories/card-games.jpg"
+	},
+	"2": {
+		"id": "table",
+		"name": "Table-Top Games",
+		"image": "images/product-categories/table-top-games.jpg"
+	},
+	"3": {
+		"id": "comic",
+		"name": "Comics",
+		"image": "images/product-categories/comics.jpg"
+	},
+	"4": {
+		"id": "puzzle",
+		"name": "Puzzles",
+		"image": "images/product-categories/puzzles.jpg"
+	},
+	"5": {
+		"id": "jewelry",
+		"name": "Jewelry",
+		"image": "images/product-categories/Jewelry.jpg"
+	}
+}

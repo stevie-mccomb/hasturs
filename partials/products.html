@@ -1,2 +1,22 @@
 
+<div class="product-container" product-container>
+	<div class="categories" ng-hide="viewingCategory || viewingProduct">
+		<h2>Products</h2>
+		<div class="product-category" ng-click="viewCategory(category)" ng-repeat="category in productCategories">
+			<img ng-src="{{ category.image }}" alt="{{ category.name }}" class="category-image" />
+			<h3>{{ category.name }}</h3>
+		</div>
+	</div>
 
+	<div class="category" ng-show="viewingCategory">
+		<h2>{{ category.name }}</h2>
+		<table class="products">
+			<tr class="headers"><th>Name</th><th>Players</th><th>Play-Time</th></tr>
+			<tr ng-repeat="product in products" ng-class="{odd: ($index % 2)}" ng-show="product.type == category.id">
+				<td>{{ product.name }}</td>
+				<td>{{ product.players }}</td>
+				<td>{{ product.playtime }}</td>
+			</tr>
+		</table>
+	</div>
+</div>

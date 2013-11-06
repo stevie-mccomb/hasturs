@@ -9,7 +9,7 @@
 body {
 	background: #101010;
 	font-family: 'Myriad Pro', sans-serif;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 .header {
@@ -39,7 +39,7 @@ body {
 	height: 42px;
 	border-radius: 5px;
 	margin-right: 32px;
-	padding-top: 6px;
+	padding-top: 8px;
 	text-align: center;
 	font-size: 22px;
 	cursor: pointer;
@@ -63,15 +63,34 @@ body {
 	overflow: hidden;
 }
 
+.slideshow-arrow {
+	position: absolute;
+	top: 50%;
+	right: 2%;
+	margin-top: -23px;
+	z-index: 2;
+	cursor: pointer;
+}
+
+.slideshow-arrow:first-child {
+	left: 0;
+	margin-left: 2%;
+}
+
 .slide {
-	position: relative;
+	position: absolute;
+	z-index: 0;
 	width: 100%;
+}
+
+.slide.active {
+	z-index: 1;
 }
 
 .well {
 	margin-top: 20px;
 	width: 47%;
-	height: 461px;
+	min-height: 461px;
 	background: #333;
 	border-radius: 5px;
 	margin-bottom: 40px;
@@ -92,28 +111,28 @@ body {
 	border-color: #d4af37;
 }
 
-.events-container {
+.featured-events {
 	margin-left: 2%;
 	float: left;
 }
 
-.events-container h3 {
+.featured-events h3 {
 	font-weight: normal;
 	color: #d4af37;
 	margin-top: 30px;
 }
 
-.events-container p {
+.featured-events p {
 	color: #a6a6a6;
 	margin-top: 5px;
 }
 
-.events-container .truncated {
+.featured-events .truncated {
 	color: #d4af37;
 	text-decoration: none;
 }
 
-.products-container {
+.featured-products {
 	margin-left: 2%;
 }
 
@@ -139,10 +158,184 @@ body {
 	text-decoration: none;
 }
 
+.products-list a:hover {
+	color: #fff;
+}
+
 .footer {
 	width: 100%;
 	height: 60px;
 }
+
+/* ---- Products ---- */
+
+.product-container {
+	width: 960px;
+	margin: 20px auto;
+	overflow: auto;
+}
+
+.product-container h2 {
+	color: #d4af37;
+	font-size: 32px;
+	font-weight: normal;
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+
+.product-category {
+	width: 280px;
+	height: 280px;
+	border-radius: 10px;
+	background: #1c1c1c;
+	box-shadow: 1px 1px 4px #050505 inset;
+	float: left;
+	margin-right: 60px;
+	margin-bottom: 60px;
+	cursor: pointer;
+}
+
+.product-category img {
+	margin-top: 20px;
+	margin-left: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 5px #000;
+}
+
+.product-category h3 {
+	color: #a6a6a6;
+	font-weight: normal;
+	text-transform: uppercase;
+	text-align: center;
+	margin-top: 15px;
+}
+
+.product-category:nth-of-type(3) {
+	margin-right: 0;
+}
+
+.product-category:nth-of-type(6) {
+	margin-right: 0;
+}
+
+.products {
+	width: 100%;
+}
+
+.products tr {
+	width: 100%;
+	color: #a6a6a6;
+}
+
+.products tr {
+	background: #151515;
+}
+
+.products tr.odd {
+	background: #1c1c1c;
+}
+
+.products tr th {
+	height: 42px;
+	font-weight: normal;
+}
+
+.products tr td {
+	height: 42px;
+	padding-left: 20px;
+}
+
+.products .first-row td {
+	border-top: 1px solid #fff;
+}
+
+/* ---- Contact ---- */
+
+.contact {
+	width: 960px;
+	margin: 20px auto;
+	padding: 20px;
+	background: #282828;
+	border-radius: 10px;
+	box-shadow: 1px 1px 3px #000 inset;
+	overflow: auto;
+}
+
+.contact h1 {
+	color: #d4af37;
+	font-weight: normal;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+
+.contact form {
+	width: 480px;
+	float: left;
+}
+
+.contact form label {
+	display: block;
+	margin-top: 20px;
+	color: #d4af37;
+	font-size: 22px;
+}
+
+.contact form label:first-of-type {
+	margin-top: 0;
+}
+
+.contact form label input, .contact form label textarea {
+	display: block;
+	margin-top: 5px;
+	padding-left: 10px;
+	background: #1c1c1c;
+	border: 1px solid #333;
+	border-radius: 5px;
+	color: #a6a6a6;
+	font-size: 18px;
+	resize: none;
+}
+
+.contact form label input {
+	width: 320px;
+	height: 35px;
+}
+
+.contact form label textarea {
+	width: 480px;
+	height: 240px;
+	font-family: 'Myriad Pro', sans-serif;
+	font-size: 20px;
+}
+
+.contact form button {
+	width: 120px;
+	height: 42px;
+	margin-top: 20px;
+	border: 0;
+	border-radius: 5px;
+	background: #d4af37;
+	background: -moz-linear-gradient(top,  #d4af37 0%, #d19900 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d4af37), color-stop(100%,#d19900));
+	background: -webkit-linear-gradient(top,  #d4af37 0%,#d19900 100%);
+	background: -o-linear-gradient(top,  #d4af37 0%,#d19900 100%);
+	background: -ms-linear-gradient(top,  #d4af37 0%,#d19900 100%);
+	background: linear-gradient(to bottom,  #d4af37 0%,#d19900 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4af37', endColorstr='#d19900',GradientType=0 );
+	color: #333;
+	font-size: 17px;
+}
+
+.contact p {
+	width: 380px;
+	float: right;
+	color: #a6a6a6;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+/* ---- Footer ---- */
 
 .footer p {
 	color: #a6a6a6;

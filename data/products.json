@@ -1,0 +1,34 @@
+{
+	"0": {
+		"name": "Warhammer 40,000",
+		"type": "table",
+		"players": "2-6"
+	},
+	"1": {
+		"name": "Munchkin",
+		"type": "card",
+		"players": "3-6",
+		"playtime": "30+ min"
+	},
+	"2": {
+		"name": "Munchkin Bites!",
+		"type": "card",
+		"players": "3-6",
+		"playtime": "30+ min"
+	},
+	"3": {
+		"name": "Magic the Gathering",
+		"type": "card",
+		"players": "2-4",
+		"playtime": "10 min - 1 hour"
+	},
+	"5": {
+		"name": "nn",
+		"type": "table"
+	},
+	"4": {
+		"name": "Warhammer 40,000: Dark Vengeance",
+		"type": "table",
+		"players": "2-6"
+	}
+}
