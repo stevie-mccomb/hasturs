@@ -1,12 +1,16 @@
-var app = angular.module('hasturs', ['ngResource'])
+var app = angular.module('hasturs', ['ngRoute', 'ngResource'])
 	.config(viewRouter);
 
 // Router
 
 function viewRouter($routeProvider) {
 	$routeProvider
-		.when('/events', {templateUrl: 'partials/events.html'})
-		.when('/products', {templateUrl: 'partials/products.html'})
+		.when('/events', {
+			templateUrl: 'partials/events.html'
+		})
+		.when('/products', {
+			templateUrl: 'partials/products.html'
+		})
 		.when('/contact', {templateUrl: 'partials/contact.html'})
 		.otherwise({templateUrl: 'partials/home.html'});
 };
@@ -74,7 +78,7 @@ app.directive('featuredProducts', ['ProductFactory', function(ProductFactory) {
 	}
 }]);
 
-app.directive('productContainer', ['ProductFactory', function(ProductFactory) {
+var productContainer = app.directive('productContainer', ['ProductFactory', function(ProductFactory) {
 	return {
 		link: function(scope, elem) {
 			scope.viewingCategory = false;
@@ -83,13 +87,14 @@ app.directive('productContainer', ['ProductFactory', function(ProductFactory) {
 
 			scope.viewCategory = function(category) {
 				scope.category = category;
-				scope.products = ProductFactory.products.get();
+				scope.products = ProductFactory.getProducts(category).get();
 				scope.viewingCategory = category.name;
-			}
+			};
 
 			scope.viewProduct = function(product) {
-				scope.viewingProduct = product;
-			}
+				scope.currentProduct = product;
+				scope.viewingProduct = product.name;
+			};
 		}
 	}
 }]);

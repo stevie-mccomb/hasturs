@@ -1,6 +1,6 @@
 
 <div class="product-container" product-container>
-	<div class="categories" ng-hide="viewingCategory || viewingProduct">
+	<div class="categories" ng-hide="viewingCategory">
 		<h2>Products</h2>
 		<div class="product-category" ng-click="viewCategory(category)" ng-repeat="category in productCategories">
 			<img ng-src="{{ category.image }}" alt="{{ category.name }}" class="category-image" />
@@ -10,13 +10,31 @@
 
 	<div class="category" ng-show="viewingCategory">
 		<h2>{{ category.name }}</h2>
-		<table class="products">
-			<tr class="headers"><th>Name</th><th>Players</th><th>Play-Time</th></tr>
-			<tr ng-repeat="product in products" ng-class="{odd: ($index % 2)}" ng-show="product.type == category.id">
-				<td>{{ product.name }}</td>
-				<td>{{ product.players }}</td>
-				<td>{{ product.playtime }}</td>
-			</tr>
-		</table>
+		<p ng-click="viewingCategory = false">Back to Products</p>
+
+		<!-- Games -->
+		<div class="productsGrid" ng-if="viewingCategory == 'Board Games' || viewingCategory == 'Card Games' || viewingCategory == 'Table-Top Games'">
+			<div class="gridCell" ng-repeat="product in products">
+				<div class="productWell" ng-click="viewProduct(product)">
+					<div class="productThumb" style="background: url('{{ product.thumb }}');"></div>
+					<p>{{ product.name }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="shade" ng-show="viewingProduct" ng-click="viewingProduct = false"></div>
+
+	<!-- Single Game -->
+	<div class="singleProduct" ng-show="viewingProduct">
+		<div class="close-button" ng-click="viewingProduct = false">X</div>
+		<!-- <img src="images/close-button.png" alt="Close" class="close-button" /> -->
+		<h2>{{ currentProduct.name }}</h2>
+		<div style="background-image: url('{{ currentProduct.image }}'); background-position: center center; background-size: cover;" class="productImage"></div>
+		<div class="productFeatures">
+			<div><img src="images/players.png" alt="Players" title="Players" class="feature-icon" /><p>{{ currentProduct.players }}</p></div>
+			<div><img src="images/clock.png" alt="Playtime" title="Playtime" class="feature-icon" style="margin-top: -3px;" /><p>{{ currentProduct.playtime }}</p></div>
+			<div><button class="buy-button">Buy</button></div>
+		</div>
 	</div>
 </div>

@@ -17,6 +17,9 @@ app.factory('ProductFactory', ['$resource', function($resource) {
 		productCategories: $resource('data/product-categories.json'),
 		products: $resource('data/products.json'),
 		productsOne: $resource('data/featured-products-one.json'),
-		productsTwo: $resource('data/featured-products-two.json')
+		productsTwo: $resource('data/featured-products-two.json'),
+		getProducts: function(category) {
+			return $resource('data/' + category.id + '.json');
+		}
 	}
 }]);
