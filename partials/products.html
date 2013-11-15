@@ -1,6 +1,6 @@
 
-<div class="product-container" product-container>
-	<div class="categories" ng-hide="viewingCategory">
+<div class="ninesixty" product-container>
+	<div class="categories" ng-if="!viewingCategory">
 		<h2>Products</h2>
 		<div class="product-category" ng-click="viewCategory(category)" ng-repeat="category in productCategories">
 			<img ng-src="{{ category.image }}" alt="{{ category.name }}" class="category-image" />
@@ -8,7 +8,7 @@
 		</div>
 	</div>
 
-	<div class="category" ng-show="viewingCategory">
+	<div class="category" ng-if="viewingCategory">
 		<h2>{{ category.name }}</h2>
 		<p ng-click="viewingCategory = false">Back to Products</p>
 
@@ -23,7 +23,7 @@
 		</div>
 	</div>
 
-	<div class="shade" ng-show="viewingProduct" ng-click="viewingProduct = false"></div>
+	<div class="shade" ng-if="viewingProduct" ng-click="viewingProduct = false"></div>
 
 	<!-- Single Game -->
 	<div class="singleProduct" ng-show="viewingProduct">

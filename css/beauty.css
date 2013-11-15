@@ -171,13 +171,13 @@ body {
 
 /* ---- Products ---- */
 
-.product-container {
+.ninesixty {
 	width: 960px;
 	margin: 20px auto;
 	overflow: auto;
 }
 
-.product-container h2 {
+.category-container h2, .categories h2 {
 	color: #d4af37;
 	font-size: 32px;
 	font-weight: normal;

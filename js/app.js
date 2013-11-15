@@ -11,7 +11,21 @@ function viewRouter($routeProvider) {
 		.when('/products', {
 			templateUrl: 'partials/products.html'
 		})
-		.when('/contact', {templateUrl: 'partials/contact.html'})
+		.when('/products/:category', {
+			templateUrl: 'partials/product-category.html',
+			controller: function($scope, $routeParams) {
+				$scope.category = $routeParams.category;
+			}
+		})
+		/*.when('/products/:productName', {
+			templateUrl: 'partials/products.html',
+			controller: function($scope, $routeParams) {
+				$scope.product = $routeParams.productName;
+			}
+		})*/
+		.when('/contact', {
+			templateUrl: 'partials/contact.html'
+		})
 		.otherwise({templateUrl: 'partials/home.html'});
 };
 
@@ -20,10 +34,9 @@ function viewRouter($routeProvider) {
 app.directive('navigation', ['$rootScope', function($rootScope) {
 	return {
 		link: function(scope, elem) {
-			scope.activeView = 'home';
-			scope.setActive = function(viewName) {
-				scope.activeView = viewName;
-			}
+			scope.setActive = function(view) {
+				scope.activeView = view;
+			};
 		}
 	}
 }]);
@@ -81,6 +94,14 @@ app.directive('featuredProducts', ['ProductFactory', function(ProductFactory) {
 var productContainer = app.directive('productContainer', ['ProductFactory', function(ProductFactory) {
 	return {
 		link: function(scope, elem) {
+			/*scope.products = $http({
+				method: 'POST',
+				url: 'data/products.php',
+				data: scope.category,
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			}).success(function(data) {
+				scope.products = data;
+			});*/
 			scope.viewingCategory = false;
 			scope.viewingProduct = false;
 			scope.productCategories = ProductFactory.productCategories.get();
@@ -95,6 +116,22 @@ var productContainer = app.directive('productContainer', ['ProductFactory', func
 				scope.currentProduct = product;
 				scope.viewingProduct = product.name;
 			};
+		}
+	}
+}]);
+
+app.directive('category', ['$http', function($http) {
+	return {
+		link: function(scope) {
+			scope.category = $http({
+				method: 'POST',
+				url: 'data/categories.php',
+				data: scope.category,
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			}).success(function(data) {
+				scope.category = data[0];
+				scope.products = data[1];
+			});
 		}
 	}
 }]);

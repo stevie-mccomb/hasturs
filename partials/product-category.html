@@ -1,0 +1,17 @@
+
+<div class="ninesixty">
+	<div class="category-container" category>
+		<h2>{{ category }}</h2>
+		<p ng-click="viewingCategory = false">Back to Products</p>
+
+		<!-- Games -->
+		<div class="productsGrid">
+			<div class="gridCell" ng-repeat="product in products">
+				<div class="productWell" ng-click="viewProduct(product)">
+					<div class="productThumb" style="background: url('{{ product.thumb }}');"></div>
+					<p>{{ product.name }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
