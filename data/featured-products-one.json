@@ -1,15 +1,19 @@
 {
 	"Magic the Gathering": {
-		"name": "Magic the Gathering"
+		"name": "Magic the Gathering",
+		"anchor": "magicthegathering"
 	},
 	"Munchkin": {
-		"name": "Munchkin"
+		"name": "Munchkin",
+		"anchor": "munchkin"
 	},
 	"Munchkin Apocalypse": {
-		"name": "Munchkin Apocalypse"
+		"name": "Munchkin Apocalypse",
+		"anchor": "munchkinapocalypse"
 	},
 	"Munchkin Cthulu": {
-		"name": "Munchkin Cthulu"
+		"name": "Munchkin Cthulu",
+		"anchor": "munchkincthulu"
 	},
 	"Munchkin Bites!": {
 		"name": "Munchkin Bites!"

@@ -1,2 +1,14 @@
 
-
+<div class="ninesixty">
+	<div class="full-width events" events>
+		<h2>Events</h2>
+		<hr />
+		<div class="event" ng-repeat="event in events" ng-class="{even: $index % 2 > 0, odd: $index % 2 == 0}">
+			<a name="{{ event.anchor }}"><h3>{{ event.name }}</h3></a>
+			<div class="image" style="background: url('{{ event.image }}') center center no-repeat; background-size: cover;" alt="{{ event.name }}"></div>
+			<div class="description-container">
+				<p><span class="event-time">When: &nbsp;{{ event.time }}</span>{{ event.description }}</p>
+			</div>
+		</div>
+	</div>
+</div>

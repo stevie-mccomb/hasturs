@@ -1,8 +1,8 @@
 
 <div class="ninesixty">
 	<div class="category-container" category>
-		<h2>{{ category }}</h2>
-		<p ng-click="viewingCategory = false">Back to Products</p>
+		<h2>{{ categoryName }}</h2>
+		<p><a href="#products/">Back to Products</a></p>
 
 		<!-- Games -->
 		<div class="productsGrid">
@@ -11,6 +11,21 @@
 					<div class="productThumb" style="background: url('{{ product.thumb }}');"></div>
 					<p>{{ product.name }}</p>
 				</div>
+			</div>
+		</div>
+
+		<div class="shade" ng-if="viewingProduct" ng-click="closeLightbox()"></div>
+
+		<!-- Single Game -->
+		<div class="singleProduct" ng-show="viewingProduct">
+			<div class="close-button" ng-click="closeLightbox()">X</div>
+			<!-- <img src="images/close-button.png" alt="Close" class="close-button" /> -->
+			<h2>{{ currentProduct.name }}</h2>
+			<div style="background-image: url('{{ currentProduct.image }}'); background-position: center center; background-size: cover;" class="productImage"></div>
+			<div class="productFeatures">
+				<div><img src="images/players.png" alt="Players" title="Players" class="feature-icon" /><p>{{ currentProduct.players }}</p></div>
+				<div><img src="images/clock.png" alt="Playtime" title="Playtime" class="feature-icon" style="margin-top: -3px;" /><p>{{ currentProduct.playtime }}</p></div>
+				<div><button class="buy-button">Buy</button></div>
 			</div>
 		</div>
 	</div>

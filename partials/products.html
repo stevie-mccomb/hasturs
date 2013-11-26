@@ -2,17 +2,15 @@
 <div class="ninesixty" product-container>
 	<div class="categories" ng-if="!viewingCategory">
 		<h2>Products</h2>
-		<div class="product-category" ng-click="viewCategory(category)" ng-repeat="category in productCategories">
-			<img ng-src="{{ category.image }}" alt="{{ category.name }}" class="category-image" />
-			<h3>{{ category.name }}</h3>
+		<div class="product-category" ng-repeat="category in productCategories">
+			<a ng-href="#products/{{ category.name }}"><img ng-src="{{ category.image }}" alt="{{ category.name }}" class="category-image" /></a>
+			<h3><a ng-href="#products/{{ category }}">{{ category.name }}</a></h3>
 		</div>
 	</div>
 
-	<div class="category" ng-if="viewingCategory">
+	<!-- <div class="category" ng-if="viewingCategory">
 		<h2>{{ category.name }}</h2>
 		<p ng-click="viewingCategory = false">Back to Products</p>
-
-		<!-- Games -->
 		<div class="productsGrid" ng-if="viewingCategory == 'Board Games' || viewingCategory == 'Card Games' || viewingCategory == 'Table-Top Games'">
 			<div class="gridCell" ng-repeat="product in products">
 				<div class="productWell" ng-click="viewProduct(product)">
@@ -21,7 +19,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<div class="shade" ng-if="viewingProduct" ng-click="viewingProduct = false"></div>
 

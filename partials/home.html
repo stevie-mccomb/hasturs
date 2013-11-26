@@ -11,7 +11,7 @@
 
 	<div ng-repeat="event in events">
 		<h3>{{ event.title }}</h3>
-		<p>{{ event.description }} <a href="" class="truncated">( . . . )</a></p>
+		<p>{{ event.description }} <a href="#/events/#{{ event.anchor }}" class="truncated">( . . . )</a></p>
 	</div>
 </div>
 
@@ -19,9 +19,9 @@
 	<h2>Products</h2>
 	<hr />
 	<ul class="products-list">
-		<li ng-repeat="product in productsOne"><a href="">+ {{ product.name }}</a></li>
+		<li ng-repeat="product in productsOne"><a ng-href="#/products/{{ product.anchor }}">+ {{ product.name }}</a></li>
 	</ul>
 	<ul class="products-list">
-		<li ng-repeat="product in productsTwo"><a href="">+ {{ product.name }}</a></li>
+		<li ng-repeat="product in productsTwo"><a ng-href="#/products/{{ product.anchor }}">+ {{ product.name }}</a></li>
 	</ul>
 </div>

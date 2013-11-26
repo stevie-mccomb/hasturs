@@ -12,6 +12,12 @@ body {
 	overflow-x: hidden;
 }
 
+.full-width {
+	width: 100% !important;
+}
+
+/* ---- Home ---- */
+
 .header {
 	width: 100%;
 	height: 120px;
@@ -169,6 +175,80 @@ body {
 	height: 60px;
 }
 
+/* ---- Events ---- */
+
+.events h2 {
+	color: #d4af37;
+	font-size: 32px;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+.events hr {
+	margin-top: 10px;
+	border-color: #d4af37;
+}
+
+.event:first-of-type {
+	margin-top: 20px;
+}
+
+.event {
+	width: 100%;
+	min-height: 240px;
+	overflow: auto;
+	padding-bottom: 20px;
+}
+
+.event.odd {
+	background: #222;
+}
+
+.event.even {
+	background: #1c1c1c;
+}
+
+.event h3 {
+	color: #d4af37;
+	font-size: 22px;
+	font-weight: normal;
+	text-transform: uppercase;
+	padding: 20px;
+}
+
+.event-time {
+	display: block;
+	color: #d4af37;
+	margin-bottom: 10px;
+}
+
+.event > .image {
+	width: 220px;
+	height: 220px;
+	float: left;
+	margin-left: 20px;
+	border-radius: 10px;
+	box-shadow: 1px 1px 5px #000 inset;
+}
+
+.event.even > .image {
+	float: right;
+	margin-left: 0;
+	margin-right: 20px;
+}
+
+.event .description-container {
+	width: 720px;
+	float: right;
+}
+
+.event .description-container p {
+	color: #a6a6a6;
+	padding-left: 20px;
+	padding-right: 20px;
+	line-height: 1.5;
+}
+
 /* ---- Products ---- */
 
 .ninesixty {
@@ -184,6 +264,12 @@ body {
 	text-align: center;
 	text-transform: uppercase;
 	margin-bottom: 20px;
+}
+
+.category-container > p a {
+	color: #d4af37;
+	font-size: 18px;
+	text-decoration: none;
 }
 
 .product-category {
@@ -211,6 +297,11 @@ body {
 	text-transform: uppercase;
 	text-align: center;
 	margin-top: 15px;
+}
+
+.product-category h3 a {
+	color: #a6a6a6;
+	text-decoration: none;
 }
 
 .product-category:nth-of-type(3) {
@@ -280,6 +371,7 @@ body {
 }
 
 .productsGrid .gridCell .productWell .productThumb {
+	cursor: pointer;
 	width: 240px;
 	height: 200px;
 	background-size: cover;
@@ -291,6 +383,11 @@ body {
 }
 
 .productsGrid .gridCell .productWell p {
+	color: #a6a6a6;
+	font-size: 16pt;
+	cursor: pointer;
+	position: relative;
+	top: -50px;
 	display: block;
 	position: relative;
 	top: 30px;
