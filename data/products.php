@@ -1,24 +1,35 @@
 <?php
 
-	$category = file_get_contents("php://input");
+	$parameter = file_get_contents("php://input");
 
 	require 'idiorm.php';
 	require 'db-connection.php';
 
 	// Get Category ID:
-	$categoryId = ORM::for_table('categories')->where('name', $category)->find_one();
+	if ($parameter != 1) {
+		$category = ORM::for_table('categories')->where('name', $parameter)->find_one();
+	}
 
 	// Products
-	$productsData = ORM::for_table('products')->where('category', $categoryId->id)->find_many();
+	if ($parameter != 1) {
+		$productsData = ORM::for_table('products')->where('category', $category->id)->find_many();
+	} else {
+		$productsData = ORM::for_table('products')->where('featured', $parameter)->find_many();
+	}
 	$products = array();
 	foreach($productsData as $productData) {
 		$product = new stdClass();
-		$product->name = $productData->name;
-		$product->thumb = $productData->thumb;
-		$product->image = $productData->image;
-		$product->players = $productData->players;
-		$product->playtime = $productData->playtime;
-		$product->price = $productData->price;
+			$product->name = $productData->name;
+			switch($productData->category) {
+				default:
+					$product->category = 'Card Games';
+				break;
+			}
+			$product->thumb = $productData->thumb;
+			$product->image = $productData->image;
+			$product->players = $productData->players;
+			$product->playtime = $productData->playtime;
+			$product->price = $productData->price;
 		array_push($products, $product);
 	}
 

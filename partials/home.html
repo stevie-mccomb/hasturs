@@ -10,8 +10,8 @@
 	<hr />
 
 	<div ng-repeat="event in events">
-		<h3>{{ event.title }}</h3>
-		<p>{{ event.description }} <a href="#/events/#{{ event.anchor }}" class="truncated">( . . . )</a></p>
+		<h3><a href="#/events/#{{ event.anchor }}">{{ event.name }}</a></h3>
+		<p>{{ event.description }} <a href="#/events/#{{ event.anchor }}" class="truncated" ng-if="event.truncated">( . . . )</a></p>
 	</div>
 </div>
 
@@ -19,7 +19,7 @@
 	<h2>Products</h2>
 	<hr />
 	<ul class="products-list">
-		<li ng-repeat="product in productsOne"><a ng-href="#/products/{{ product.anchor }}">+ {{ product.name }}</a></li>
+		<li ng-repeat="product in productsOne"><a ng-href="#/products/{{ product.category }}/{{ product.name }}">+ {{ product.name }}</a></li>
 	</ul>
 	<ul class="products-list">
 		<li ng-repeat="product in productsTwo"><a ng-href="#/products/{{ product.anchor }}">+ {{ product.name }}</a></li>

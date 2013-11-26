@@ -1,42 +1,4 @@
 var app = angular.module('hasturs', ['ngRoute', 'ngResource'])
-	.config(viewRouter);
-
-// Router
-
-function viewRouter($routeProvider) {
-	$routeProvider
-		.when('/events', {
-			templateUrl: 'partials/events.html',
-			controller: function($rootScope) {
-				$rootScope.activeView = 'events';
-			}
-		})
-		.when('/products', {
-			templateUrl: 'partials/products.html',
-			controller: function($rootScope) {
-				$rootScope.activeView = 'products';
-			}
-		})
-		.when('/products/:categoryName', {
-			templateUrl: 'partials/product-category.html',
-			controller: function($rootScope, $scope, $routeParams) {
-				$rootScope.activeView = 'products';
-				$scope.categoryName = $routeParams.categoryName;
-			}
-		})
-		.when('/contact', {
-			templateUrl: 'partials/contact.html',
-			controller: function($rootScope) {
-				$rootScope.activeView = 'contact';
-			}
-		})
-		.otherwise({
-			templateUrl: 'partials/home.html',
-			controller: function($rootScope) {
-				$rootScope.activeView = 'home';
-			}
-		});
-};
 
 // Directives
 
@@ -83,19 +45,45 @@ app.directive('slideshow', ['SlideFactory', function(SlideFactory) {
 	}
 }]);
 
-app.directive('featuredEvents', ['EventFactory', function(EventFactory) {
+app.directive('featuredEvents', ['$http', function($http) {
 	return {
 		link: function(scope, elem) {
-			scope.events = EventFactory.events.get();
+			scope.events = $http({
+				method: 'POST',
+				url: 'data/events.php',
+				data: 1
+			}).success(function(data) {
+				scope.events = data;
+				var maxLength = 300;
+				for (var i = 0; i < scope.events.length; ++i) {
+					if (scope.events[i].description.length > maxLength) {
+						scope.events[i].truncated = true;
+						var splitDescription = scope.events[i].description.split(' ');
+						var compound = '';
+						for (var i2 = 0; i2 < splitDescription.length; ++i2) {
+							if ((compound.length + splitDescription[i2].length) <= 300) {
+								compound += splitDescription[i2] + ' ';
+							} else {
+								scope.events[i].description = compound;
+							}
+						}
+					}
+				}
+			});
 		}
 	}
 }]);
 
-app.directive('featuredProducts', ['ProductFactory', function(ProductFactory) {
+app.directive('featuredProducts', ['$http', function($http) {
 	return {
 		link: function(scope, elem) {
-			scope.productsOne = ProductFactory.productsOne.get();
-			scope.productsTwo = ProductFactory.productsTwo.get();
+			scope.events = $http({
+				method: 'POST',
+				url: 'data/products.php',
+				data: 1
+			}).success(function(data) {
+				scope.productsOne = data;
+			});
 		}
 	}
 }]);
@@ -126,7 +114,7 @@ var productContainer = app.directive('productContainer', ['ProductFactory', func
 app.directive('category', ['$http', function($http) {
 	return {
 		link: function(scope) {
-			scope.category = $http({
+			$http({
 				method: 'POST',
 				url: 'data/products.php',
 				data: scope.categoryName,
@@ -136,12 +124,11 @@ app.directive('category', ['$http', function($http) {
 			});
 
 			scope.viewProduct = function(product) {
-				scope.currentProduct = product;
-				scope.viewingProduct = product.name;
+				window.location = '#/products/' + scope.categoryName + '/' + product.name;
 			};
 
 			scope.closeLightbox = function() {
-				scope.viewingProduct = false;
+				window.location = '#/products/' + scope.categoryName;
 			};
 		}
 	}
