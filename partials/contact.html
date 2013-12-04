@@ -1,12 +1,15 @@
 
 <div class="contact">
 	<h1>Contact Us</h1>
-	<form action="" method="post" enctype="multipart/form-data">
-		<label for="name">Name<input type="text" id="name" name="name" placeholder="Your Name" /></label>
-		<label for="email">Email<input type="text" id="email" name="email" placeholder="Your Email" /></label>
-		<label for="phone">Phone<input type="text" id="phone" name="phone" placeholder="Your Phone Number" /></label>
-		<label for="message">Message<textarea id="message" placeholder="Your Message"></textarea></label>
-		<button type="submit">Send</button>
+	<div id="spinner" class="faded"></div>
+	<div id="success-message" class="faded">Success!<br />Your mail has been sent!</div>
+	<div id="failure-message" class="faded">Failed.<br />Sorry, but your mail could not be sent.</div>
+	<form action="data/mail.php" method="post" enctype="multipart/form-data" target="contact-target" contact-form>
+		<label for="name">Name<input type="text" id="name" name="name" placeholder="Your Name" ng-model="contact.name" /></label>
+		<label for="email">Email<input type="text" id="email" name="email" placeholder="Your Email" ng-model="contact.email" /></label>
+		<label for="phone">Phone<input type="text" id="phone" name="phone" placeholder="Your Phone Number" ng-model="contact.phone" /></label>
+		<label for="message">Message<textarea id="message" placeholder="Your Message" ng-model="contact.message"></textarea></label>
+		<button type="button" ng-click="sendMail()">Send</button>
 	</form>
 
 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis nec neque quis vehicula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla facilisi. Curabitur nec velit urna. Nam erat justo, facilisis ac turpis sit amet, vulputate porta ipsum. Morbi pellentesque nisl sed posuere ultricies. Etiam vulputate sagittis erat a molestie. Mauris gravida leo a lobortis interdum. Proin ut ante eget odio malesuada faucibus. Maecenas et est a lectus bibendum auctor in eu velit. Pellentesque ac congue felis. Donec sed porta lorem. Sed a massa justo. Nam eget nulla dui. Nunc lectus odio, blandit et ligula at, laoreet tincidunt ligula.</p>

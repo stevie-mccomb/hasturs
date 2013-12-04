@@ -8,7 +8,7 @@
 		<div class="productsGrid">
 			<div class="gridCell" ng-repeat="product in products">
 				<div class="productWell" ng-click="viewProduct(product)">
-					<div class="productThumb" style="background: url('{{ product.thumb }}');"></div>
+					<div class="productThumb" style="background-image: url({{ product.thumb }})"></div>
 					<p>{{ product.name }}</p>
 				</div>
 			</div>
@@ -21,7 +21,7 @@
 			<div class="close-button" ng-click="closeLightbox()">X</div>
 			<!-- <img src="images/close-button.png" alt="Close" class="close-button" /> -->
 			<h2>{{ product.name }}</h2>
-			<div style="background-image: url('{{ product.image }}'); background-position: center center; background-size: cover;" class="productImage"></div>
+			<div style="background-image: url({{ product.image }})" class="productImage"></div>
 			<div class="productFeatures">
 				<div><img src="images/players.png" alt="Players" title="Players" class="feature-icon" /><p>{{ product.players }}</p></div>
 				<div><img src="images/clock.png" alt="Playtime" title="Playtime" class="feature-icon" style="margin-top: -3px;" /><p>{{ product.playtime }}</p></div>

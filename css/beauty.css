@@ -290,7 +290,7 @@ body {
 .product-category img {
 	margin-top: 20px;
 	margin-left: 20px;
-	border-radius: 10px;
+	border-radius: 3px;
 	box-shadow: 0 0 5px #000;
 }
 
@@ -378,7 +378,7 @@ body {
 	width: 240px;
 	height: 200px;
 	background-size: cover;
-	border-radius: 10px;
+	border-radius: 3px;
 	position: relative;
 	top: 20px;
 	margin-left: 20px;
@@ -447,6 +447,9 @@ body {
 	border: 1px solid #444;
 	border-radius: 5px;
 	box-shadow: 0 0 10px #000 inset;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .productFeatures {
@@ -519,6 +522,7 @@ body {
 	border-radius: 10px;
 	box-shadow: 1px 1px 3px #000 inset;
 	overflow: auto;
+	position: relative;
 }
 
 .contact h1 {
@@ -531,6 +535,7 @@ body {
 .contact form {
 	width: 480px;
 	float: left;
+	position: relative;
 }
 
 .contact form label {
@@ -586,12 +591,48 @@ body {
 	font-size: 17px;
 }
 
+.contact iframe {
+	display: none;
+}
+
 .contact p {
 	width: 380px;
 	float: right;
 	color: #a6a6a6;
 	margin-top: 20px;
 	margin-bottom: 20px;
+}
+
+.contact #spinner {
+	width: 128px;
+	height: 128px;
+	background: url('../images/spinner.GIF') center center no-repeat;
+	position: absolute;
+	top: 50%;
+	left: 20%;
+	margin-top: -64px;
+}
+
+.contact .faded {
+	transition: 0.2s;
+	-webkit-transition: 0.2s;
+	-moz-transition: 0.2s;
+	-o-transition: 0.2s;
+	opacity: 0;
+}
+
+.contact .visible {
+	opacity: 1;
+}
+
+.contact #success-message {
+	width: 50%;
+	position: absolute;
+	margin-top: 200px;
+	text-align: center;
+	font-size: 32px;
+	line-height: 1.5;
+	color: #d4af37;
 }
 
 /* ---- Footer ---- */

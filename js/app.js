@@ -82,7 +82,17 @@ app.directive('featuredProducts', ['$http', function($http) {
 				url: 'data/products.php',
 				data: 1
 			}).success(function(data) {
-				scope.productsOne = data;
+				scope.productsOne = [];
+				scope.productsTwo = [];
+				for (var i = 0; i < data.length; ++i) {
+					if (i < 13) {
+						scope.productsOne.push(data[i]);
+					} else if (i < 26) {
+						scope.productsTwo.push(data[i]);
+					} else {
+						return;
+					}
+				}
 			});
 		}
 	}
@@ -111,7 +121,7 @@ var productContainer = app.directive('productContainer', ['ProductFactory', func
 	}
 }]);
 
-app.directive('category', ['$http', function($http) {
+app.directive('category', ['$http', '$location', function($http, $location) {
 	return {
 		link: function(scope) {
 			$http({
@@ -124,11 +134,39 @@ app.directive('category', ['$http', function($http) {
 			});
 
 			scope.viewProduct = function(product) {
-				window.location = '#/products/' + scope.categoryName + '/' + product.name;
+				$location.path('/products/' + scope.categoryName + '/' + product.name);
 			};
 
 			scope.closeLightbox = function() {
-				window.location = '#/products/' + scope.categoryName;
+				$location.path('/products/' + scope.categoryName);
+			};
+		}
+	}
+}]);
+
+app.directive('contactForm', ['$http', function($http) {
+	return {
+		link: function(scope, elem) {
+			scope.sendMail = function() {
+				// Fade out the contact form and show spinner:
+				elem.addClass('faded');
+				var spinner = document.getElementById('spinner');
+				spinner.className = 'spinner faded visible';
+				$http({
+					method: 'POST',
+					url: 'data/mail.php',
+					data: scope.contact
+				}).success(function(data) {
+					if (data == 'true') {
+						spinner.className = 'spinner faded';
+						var successMessage = document.getElementById('success-message');
+						successMessage.className = 'visible';
+					} else {
+						spinner.className = 'spinner faded';
+						var failureMessage = document.getElementById('failure-message');
+						failureMessage.className = 'visible';
+					}
+				});
 			};
 		}
 	}

@@ -22,6 +22,6 @@
 		<li ng-repeat="product in productsOne"><a ng-href="#/products/{{ product.category }}/{{ product.name }}">+ {{ product.name }}</a></li>
 	</ul>
 	<ul class="products-list">
-		<li ng-repeat="product in productsTwo"><a ng-href="#/products/{{ product.anchor }}">+ {{ product.name }}</a></li>
+		<li ng-repeat="product in productsTwo"><a ng-href="#/products/{{ product.category }}/{{ product.name }}">+ {{ product.name }}</a></li>
 	</ul>
 </div>

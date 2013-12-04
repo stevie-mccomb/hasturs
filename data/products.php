@@ -21,6 +21,24 @@
 		$product = new stdClass();
 			$product->name = $productData->name;
 			switch($productData->category) {
+				case 1:
+					$product->category = 'Board Games';
+				break;
+				case 2:
+					$product->category = 'Card Games';
+				break;
+				case 3:
+					$product->category = 'Table-Top Games';
+				break;
+				case 4:
+					$product->category = 'Comics';
+				break;
+				case 5:
+					$product->category = 'Puzzles';
+				break;
+				case 6:
+					$product->category = 'Jewelry';
+				break;
 				default:
 					$product->category = 'Card Games';
 				break;
